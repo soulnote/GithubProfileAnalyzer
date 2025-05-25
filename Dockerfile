@@ -1,3 +1,4 @@
+
 # Use OpenJDK base image
 FROM openjdk:17-jdk-slim
 
@@ -5,7 +6,8 @@ FROM openjdk:17-jdk-slim
 WORKDIR /app
 
 # Copy the built JAR file into the container
-COPY target/github-profile-analyzer-0.0.1-SNAPSHOT.jar
+COPY target/github-profile-analyzer-0.0.1-SNAPSHOT.jar app.jar
 
 # Run the app
 ENTRYPOINT ["java", "-jar", "app.jar"]
+
