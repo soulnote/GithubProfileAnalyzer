@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${profile.fullName} + ' - GitHub Profile'">GitHub Profile</title>
+    <style>
+        body {
+            background: #f6f9fc;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 30px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .profile-header {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 20px;
+        }
+
+        .profile-header img {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            border: 3px solid #eee;
+        }
+
+        .profile-header h2 {
+            margin: 0;
+            font-size: 26px;
+            color: #333;
+        }
+
+        .profile-header p {
+            margin: 5px 0 0;
+            color: #666;
+            font-size: 16px;
+        }
+
+        .info {
+            margin-top: 25px;
+            font-size: 16px;
+            color: #444;
+            line-height: 1.8;
+        }
+
+        .info span {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        strong {
+            color: #222;
+        }
+
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="profile-header">
+        <img th:src="${profile.avatarUrl}" alt="Avatar">
+        <div>
+            <h2 th:text="${profile.fullName}"></h2>
+            <p th:text="'@' + ${profile.username}"></p>
+        </div>
+    </div>
+
+    <div class="info">
+        <span><strong>Company:</strong> <span th:text="${profile.company} ?: 'N/A'"></span></span>
+        <span><strong>Public Repos:</strong> <span th:text="${profile.publicRepos}"></span></span>
+        <span><strong>Joined GitHub:</strong> <span th:text="${profile.createdAt}"></span></span>
+        <span><strong>View on GitHub:</strong> <a th:href="${profile.profileUrl}" target="_blank" th:text="${profile.profileUrl}"></a></span>
+    </div>
+</div>
+</body>
+</html>
